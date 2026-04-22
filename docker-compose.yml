@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:15
+    container_name: artblock_postgres
+    restart: always
+    environment:
+      POSTGRES_USER: artblock_user
+      POSTGRES_PASSWORD: artblock_password
+      POSTGRES_DB: artblock_db
+    ports:
+      - "5433:5432" 
+    volumes:
+      - ./pgdata:/var/lib/postgresql/data
