@@ -1,36 +1,33 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## ArtBlock - Infraestructura y Despliegue
+En esta parte de la aplicación tenemos, de manera ordenada, la configuración de los entornos de desarrollo y también la estrategia de despliegue en producción de la infraestructura del ecosistema ArtBlock. Esta separación entre el código fuente y la infraestructura viene determinado por el hecho de que cumplimos, en definitiva, con los patrones de arquitectura basada en servicios y el alto desacoplamiento.
 
-## Getting Started
+## Entorno de Desarrollo Local (Docker)
+Para el desarrollo lEl archivo docker-compose.yml incluido en este repositorio levanta una instancia de PostgreSQL lista para conectarse con el Backend.
 
-First, run the development server:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Tecnologias y Herramientas
+Docker y Docker Compose instalados.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Levantar la Base de Datos Local
+Abre una terminal de bash  en la raíz de este repositorio.
+docker-compose up -d
+La base de datos estará disponible en el puerto local definido (usualmente 5432 o 5433).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Para detener el contenedor, utiliza:
+docker-compose downocal
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Estrategia de Despliegue en Producción
+Fronten en Vercel:	Alojamiento de la aplicación Next.js. Provee CDN global, Server-Side Rendering (SSR) optimizado y despliegues automáticos desde la rama principal.
 
-## Learn More
+Backend	en Render (Web Service):	Ejecución del servidor Node.js/Express. Se conecta de forma interna y segura con la base de datos, garantizando baja latencia.
 
-To learn more about Next.js, take a look at the following resources:
+Base de Datos	en Render (PostgreSQL):	Almacenamiento persistente y relacional de usuarios, obras y metadatos. Conectado al backend mediante Prisma ORM.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Almacenamiento	en Cloudinary (API):	Servicio externo especializado en el alojamiento y optimización de las imágenes protegidas (archivos binarios), liberando la carga de la base de datos principal.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Equipo
+Escobar Nuricumbo Heber Alexander-243691
+Cuc López Axel Rodrigo-243702
+Santillan Montesinos Eduardo-243747
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Docente: Viviana López Rojo
